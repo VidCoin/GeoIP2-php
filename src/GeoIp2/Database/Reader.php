@@ -129,9 +129,7 @@ class Reader implements ProviderInterface
     {
         $record = $this->dbReader->get($ipAddress);
         if ($record === null) {
-            throw new AddressNotFoundException(
-                "The address $ipAddress is not in the database."
-            );
+            error_log("The address $ipAddress is not in the database.");
         }
         $record['traits']['ip_address'] = $ipAddress;
         $class = "GeoIp2\\Model\\" . $class;
